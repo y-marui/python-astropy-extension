@@ -24,6 +24,6 @@ def get_exponential_as_unit(n):
     try:
         res:u.Unit = u.Unit(f'E{n}')
     except ValueError:
-        res:u.Unit = u.def_unit(f'E{{{n}}}', 10**n * u.one, format={"LaTeX": f'10^{{{n}}}'})
+        res:u.Unit = u.def_unit(f'E{{{n}}}', 10**n * u.one, format={"latex": f'10^{{{n}}}'})
         u.add_enabled_units([res])
     return res
