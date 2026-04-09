@@ -5,13 +5,13 @@ import astropy.units as u
 try:
     sccm: u.Unit = u.Unit("sccm")
 except ValueError:
-    sccm: u.Unit = u.def_unit("sccm", u.ml / u.m)
+    sccm = u.def_unit("sccm", u.ml / u.m)
     u.add_enabled_units(sccm)
 
 try:
     uohm_cm: u.Unit = u.Unit("uohm_cm")
 except ValueError:
-    uohm_cm: u.Unit = u.def_unit("uohm_cm", u.uohm * u.cm, format={"latex": r"\mu\Omega\,cm"})
+    uohm_cm = u.def_unit("uohm_cm", u.uohm * u.cm, format={"latex": r"\mu\Omega\,cm"})
     u.add_enabled_units([uohm_cm])
 
 try:
