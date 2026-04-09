@@ -1,0 +1,51 @@
+# AI_CONTEXT.md
+
+## Project Overview
+
+astropy を拡張する Python ライブラリ。天文データ解析向けのカスタム単位・単位フォーマット・可視化・データ入出力ユーティリティを提供する。
+
+**技術スタック:**
+- 言語: Python >= 3.8
+- 主要依存: astropy >= 5.1, numpy >= 1.23.3, matplotlib >= 3.6.1, pylightxl >= 1.61
+- ビルド: poetry
+- テスト: pytest
+
+**主要ディレクトリ:**
+
+```
+astropy_extension/   # ライブラリ本体
+  io/                # データ入出力
+  units.py           # カスタム単位定義 (sccm, uohm_cm, A__m2 等)
+  units_format.py    # 単位フォーマット
+  visualization.py   # 可視化ユーティリティ
+  utils_misc.py      # 汎用ユーティリティ
+tests/               # pytest テスト
+docs/dev-charter/    # 開発憲章（git subtree）
+```
+
+## Applied Charter Principles
+
+- **コード設計**: YAGNI 原則・最小限の依存・既存パターンへの準拠（[PRINCIPLES.md](docs/dev-charter/PRINCIPLES.md)）
+- **コミットメッセージ**: Conventional Commits（feat/fix/chore/docs/refactor）
+- **セキュリティ**: pre-commit フック（gitleaks・detect-dotenv・detect-private-key・no-hardcoded-local-paths）必須
+- **CI**: GitHub Actions で security → test → build の順で実行。`build` job が Branch Protection 必須チェック
+- **コメント**: 「なぜそうするか」のみ書く。自明な処理には書かない
+- **pre-commit**: `pre-commit run --all-files` で全フック通過が必須
+
+## Project-Specific Rules
+
+- パッケージ管理は **poetry** を使用する
+- テスト実行: `poetry run pytest`
+- Python バージョン制約: >= 3.8 互換を維持する
+
+## AI Tool Assignments
+
+- **Claude Code**: プロジェクト立ち上げ・大規模変更・アーキテクチャ設計
+- **GitHub Copilot**: バグ修正・細かな実装・単体テスト作成
+
+## Prohibited Actions
+
+- シークレット・認証情報のコードへの埋め込み
+- `.env` ファイルのコミット（`.env.example` は可）
+- ローカル絶対パス（`/Users/xxx/`）のコードへのハードコード
+- `docs/dev-charter/` 配下の直接編集（subtree 経由で管理）
