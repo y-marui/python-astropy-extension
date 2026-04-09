@@ -4,7 +4,7 @@ exclude: |
     __pycache__/|
     dist/|
     build/|
-    poetry\.lock$
+    uv\.lock$
   )
 
 repos:
@@ -69,6 +69,13 @@ repos:
   # ----------------------------------------------------------------
   # Python
   # ----------------------------------------------------------------
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.11.4
+    hooks:
+      - id: ruff
+        args: ["--fix"]
+      - id: ruff-format
+
   - repo: https://github.com/pre-commit/pygrep-hooks
     rev: v1.10.0
     hooks:

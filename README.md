@@ -20,8 +20,7 @@ astropy を拡張するユーティリティライブラリ。天文・物性デ
 ## Setup
 
 ```sh
-pip install poetry
-poetry install
+uv sync --extra dev
 ```
 
 ## Usage
@@ -42,7 +41,10 @@ e12 = get_exponential_as_unit(12)
 
 | コマンド | 説明 |
 |---|---|
-| `poetry run pytest` | テスト実行 |
+| `uv run pytest` | テスト実行 |
+| `uv run ruff check .` | lint |
+| `uv run ruff format .` | フォーマット |
+| `uv run mypy astropy_extension` | 型チェック |
 
 ## License
 

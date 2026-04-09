@@ -1,20 +1,41 @@
-[tool.poetry]
+[project]
 name = "astropy_extension"
 version = "0.1.0"
 description = ""
-authors = ["y-marui"]
+authors = [
+    {name = "Yukihiro Marui"},
+]
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.23.3",
+    "astropy>=5.1",
+    "matplotlib>=3.6.1",
+    "pylightxl>=1.61",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.8"
-numpy = ">=1.23.3"
-astropy = ">=5.1"
-matplotlib = ">=3.6.1"
-pylightxl = ">=1.61"
-
-[tool.poetry.group.dev.dependencies]
-ipykernel = ">=6.16.0"
-pytest = ">=7.1.3"
+[project.optional-dependencies]
+dev = [
+    "ipykernel>=6.16.0",
+    "pytest>=7.1.3",
+    "ruff>=0.11.0",
+    "mypy>=1.15.0",
+]
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+target-version = "py39"
+line-length = 130
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+
+[tool.mypy]
+python_version = "3.9"
+strict = false
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

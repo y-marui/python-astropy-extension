@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 # Licensed under a 3-clause BSD style license - see LICENSE.rst
 """astropy の既存クラスの一部を拡張して、便利な関数を定義する."""
+
+import astropy.units as u
 import numpy as np
 import numpy.ma as ma
-import astropy.units as u
 
-def labeled_quantity_support(xlabel="", ylabel="",
-                             format=u.format.LatexInline):
+
+def labeled_quantity_support(xlabel="", ylabel="", format=u.format.LatexInline):
     """Excute quantity_support with label.
 
     Enable support for plotting `astropy.units.Quantity` instances i
@@ -40,15 +41,15 @@ def labeled_quantity_support(xlabel="", ylabel="",
     def rad_fn(x, pos=None):
         n = int((x / np.pi) * 2.0 + 0.25)
         if n == 0:
-            return '0'
+            return "0"
         elif n == 1:
-            return 'π/2'
+            return "π/2"
         elif n == 2:
-            return 'π'
+            return "π"
         elif n % 2 == 0:
-            return '{}π'.format(n / 2)
+            return "{}π".format(n / 2)
         else:
-            return '{}π/2'.format(n)
+            return "{}π/2".format(n)
 
     class MplQuantityConverter(units.ConversionInterface):
         def __init__(self):
@@ -67,8 +68,7 @@ def labeled_quantity_support(xlabel="", ylabel="",
             else:
                 axis_label = ""
 
-            if unit in [None, u.dimensionless_unscaled,
-                        u.dimensionless_angles]:
+            if unit in [None, u.dimensionless_unscaled, u.dimensionless_angles]:
                 label = axis_label
             else:
                 label = "{} ({})".format(axis_label, unit.to_string(format))
@@ -83,7 +83,7 @@ def labeled_quantity_support(xlabel="", ylabel="",
             if unit == u.degree:
                 return units.AxisInfo(
                     majloc=ticker.AutoLocator(),
-                    majfmt=ticker.FormatStrFormatter('%i°'),
+                    majfmt=ticker.FormatStrFormatter("%i°"),
                     label=label,
                 )
             elif unit is not None:
@@ -103,9 +103,9 @@ def labeled_quantity_support(xlabel="", ylabel="",
 
         @staticmethod
         def default_units(x, axis):
-            if hasattr(x, 'unit'):
+            if hasattr(x, "unit"):
                 return x.unit
-            elif isinstance(x, ma.masked_array) and hasattr(x.data, 'unit'):
+            elif isinstance(x, ma.masked_array) and hasattr(x.data, "unit"):
                 return x.data.unit
             return None
 

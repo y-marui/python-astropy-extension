@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Licensed under a 3-clause BSD style license - see LICENSE.rst
 """astropy の既存クラスの一部を拡張して、便利な関数を定義する."""
+
 import json
 
 from astropy import units as u
@@ -10,6 +11,7 @@ from astropy.utils.misc import JsonCustomEncoder as JsonEncoder
 
 class JsonCustomEncoder(JsonEncoder):
     pass
+
 
 class JsonCustomDecoder(json.JSONDecoder):
     """
@@ -41,12 +43,11 @@ class JsonCustomDecoder(json.JSONDecoder):
 
     def __init__(self, *args, **kwargs):
         """初期化する."""
-        json.JSONDecoder.__init__(
-            self, object_hook=self.object_hook, *args, **kwargs)
+        json.JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
 
     def object_hook(self, obj):
         """オブジェクトの内指定のものを変換."""
-        if (["unit", "value"] == sorted(obj)):
+        if ["unit", "value"] == sorted(obj):
             return u.Quantity(**obj)
         if "datetime" in obj.keys():
             obj["datetime"] = Time(obj["datetime"], format="iso")
