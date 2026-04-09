@@ -36,6 +36,7 @@ repos:
       - id: check-docstring-first
       - id: debug-statements
       - id: name-tests-test
+        args: ["--pytest-test-first"]
       - id: sort-simple-yaml
 
   # Block .env files (required by dev-charter)
@@ -72,12 +73,6 @@ repos:
     rev: v1.10.0
     hooks:
       - id: python-use-type-annotations
-
-  - repo: https://github.com/asottile/pyupgrade
-    rev: v3.19.1
-    hooks:
-      - id: pyupgrade
-        args: ["--py38-plus"]
 
   # ----------------------------------------------------------------
   # Shell scripts
