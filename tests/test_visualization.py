@@ -6,7 +6,7 @@ from astropy_extension.visualization import labeled_quantity_support
 
 
 def test_labeled_quantity_support_simple():
-    x = np.linspace(0, 2*np.pi, 100) * u.rad
+    x = np.linspace(0, 2 * np.pi, 100) * u.rad
     y = np.sin(x) * u.V
 
     with labeled_quantity_support("Angle", "Volt"):
@@ -17,8 +17,9 @@ def test_labeled_quantity_support_simple():
     ylabel = ax.get_ylabel()
     plt.close()
 
-    assert xlabel == 'Angle ($\\mathrm{rad}$)'
-    assert ylabel == 'Volt ($\\mathrm{V}$)'
+    assert xlabel == "Angle ($\\mathrm{rad}$)"
+    assert ylabel == "Volt ($\\mathrm{V}$)"
+
 
 # def test_labeled_quantity_support_exp():
 #     x = np.linspace(0, 2*np.pi, 100) * u.Unit(u.rad)

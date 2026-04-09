@@ -1,7 +1,7 @@
 # Astropy Extension
 
-> **This is the reference (English) version.**
-> The canonical (Japanese) version is [README-jp.md](README-jp.md).
+> **このファイルは正本（日本語版）です。**
+> 英語版（参照）は [README.md](README.md) を参照してください。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![CI](https://github.com/y-marui/python-astropy-extension/actions/workflows/ci.yml/badge.svg)](https://github.com/y-marui/python-astropy-extension/actions/workflows/ci.yml)
@@ -51,4 +51,4 @@ e12 = get_exponential_as_unit(12)
 [MIT](LICENSE)
 
 ---
-*This document has a Japanese canonical version [README-jp.md](README-jp.md). Update both in the same commit when editing.*
+*この文書には英語版 [README.md](README.md) があります。編集時は同一コミットで更新してください。*

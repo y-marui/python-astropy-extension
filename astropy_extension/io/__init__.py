@@ -1,5 +1,6 @@
 import astropy.units as u
 
+
 def get_units(unit):
     if isinstance(unit, list):
         return [get_units(v) for v in unit]
@@ -12,6 +13,7 @@ def get_units(unit):
                 return 1 * v
             else:
                 return v
+
 
 def get_values(value):
     if isinstance(value, list):
