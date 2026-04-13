@@ -27,12 +27,15 @@ docs/dev-charter/    # 開発憲章（git subtree）
 
 ## Applied Charter Principles
 
+憲章参照: `docs/dev-charter/CHARTER_INDEX.md` でトピックを特定してから該当ファイルのみ読む
+
 - **コード設計**: YAGNI 原則・最小限の依存・既存パターンへの準拠（[PRINCIPLES.md](docs/dev-charter/PRINCIPLES.md)）
 - **コミットメッセージ**: Conventional Commits（feat/fix/chore/docs/refactor）
 - **セキュリティ**: pre-commit フック（gitleaks・detect-dotenv・detect-private-key・no-hardcoded-local-paths）必須
 - **CI**: GitHub Actions で security → test → build の順で実行。`build` job が Branch Protection 必須チェック
 - **コメント**: 「なぜそうするか」のみ書く。自明な処理には書かない
 - **pre-commit**: `pre-commit run --all-files` で全フック通過が必須
+- **憲章参照手順**: 不明点は `CHARTER_INDEX.md` → 該当ファイル（1〜2 件）の順で参照（[AI_COLLABORATION_RULES.md](docs/dev-charter/AI_COLLABORATION_RULES.md)）
 
 ## Project-Specific Rules
 
