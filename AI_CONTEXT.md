@@ -30,6 +30,7 @@ docs/dev-charter/    # 開発憲章（git subtree）
 憲章参照: `docs/dev-charter/CHARTER_INDEX.md` でトピックを特定してから該当ファイルのみ読む
 
 - **コード設計**: YAGNI 原則・最小限の依存・既存パターンへの準拠（[PRINCIPLES.md](docs/dev-charter/PRINCIPLES.md)）
+- **ドキュメント構成**: DEVELOPING.md（開発者向け）・CONTRIBUTING.md（外部向け）・docs/ の責務分離（[DOCS_STRUCTURE.md](docs/dev-charter/DOCS_STRUCTURE.md)）
 - **コミットメッセージ**: Conventional Commits（feat/fix/chore/docs/refactor）
 - **セキュリティ**: pre-commit フック（gitleaks・detect-dotenv・detect-private-key・no-hardcoded-local-paths）必須
 - **CI**: GitHub Actions で security → test → build の順で実行。`build` job が Branch Protection 必須チェック
