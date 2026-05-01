@@ -31,6 +31,7 @@ docs/dev-charter/    # 開発憲章（git subtree）
 
 - **コード設計**: YAGNI 原則・最小限の依存・既存パターンへの準拠（[PRINCIPLES.md](docs/dev-charter/PRINCIPLES.md)）
 - **ドキュメント構成**: DEVELOPING.md（開発者向け）・CONTRIBUTING.md（外部向け）・docs/ の責務分離（[DOCS_STRUCTURE.md](docs/dev-charter/DOCS_STRUCTURE.md)）
+- **ドキュメント同期**: 仕様・ルール・構成の変更時、同じ作業内で関連ドキュメント（docs/・AI_CONTEXT.md・README.md 等）を更新する（[AI_TOOL_SETUP.md](docs/dev-charter/AI_TOOL_SETUP.md)）
 - **コミットメッセージ**: Conventional Commits（feat/fix/chore/docs/refactor）
 - **セキュリティ**: pre-commit フック（gitleaks・detect-dotenv・detect-private-key・no-hardcoded-local-paths）必須
 - **CI**: GitHub Actions で security → test → build の順で実行。`build` job が Branch Protection 必須チェック
@@ -44,7 +45,7 @@ docs/dev-charter/    # 開発憲章（git subtree）
 - lint: `uv run ruff check .` / format: `uv run ruff format .`
 - 型チェック: `uv run mypy astropy_extension`
 - テスト実行: `uv run pytest`
-- Python バージョン制約: >= 3.9 互換を維持する
+- Python バージョン制約: >= 3.11（EOL まで 6 ヶ月以上あるバージョンをサポート対象とする）
 
 ## AI Tool Assignments
 

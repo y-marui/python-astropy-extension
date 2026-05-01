@@ -46,8 +46,11 @@ jobs:
       - run: uv run mypy astropy_extension
 
   test:
-    name: Test
+    name: Test (Python ${{ matrix.python-version }})
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
     permissions:
       contents: read
     steps:
@@ -55,6 +58,7 @@ jobs:
       - uses: astral-sh/setup-uv@v7
         with:
           enable-cache: true
+          python-version: ${{ matrix.python-version }}
       - run: uv sync --extra dev
       - run: uv run pytest
 
