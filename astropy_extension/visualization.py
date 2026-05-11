@@ -2,12 +2,19 @@
 # Licensed under a 3-clause BSD style license - see LICENSE.rst
 """astropy の既存クラスの一部を拡張して、便利な関数を定義する."""
 
+from contextlib import AbstractContextManager
+from typing import Any
+
 import astropy.units as u
 import numpy as np
 import numpy.ma as ma
 
 
-def labeled_quantity_support(xlabel="", ylabel="", format=u.format.LatexInline):
+def labeled_quantity_support(
+    xlabel: str = "",
+    ylabel: str = "",
+    format: Any = u.format.LatexInline,
+) -> AbstractContextManager[Any]:
     """Excute quantity_support with label.
 
     Enable support for plotting `astropy.units.Quantity` instances i
