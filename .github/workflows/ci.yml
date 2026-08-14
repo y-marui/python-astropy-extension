@@ -63,7 +63,7 @@ jobs:
       - run: uv run pytest
 
   build:
-    name: Build (installability check)
+    name: Build
     needs: [security, lint, type-check, test]
     runs-on: ubuntu-latest
     permissions: {}
