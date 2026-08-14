@@ -17,10 +17,4 @@ Use [Conventional Commits](https://www.conventionalcommits.org/) format (e.g. `f
 
 ## Pull Request Checklist
 
-- [ ] No secrets or credentials included
-- [ ] Lint passes
-- [ ] Tests pass (if applicable)
-- [ ] Build succeeds (if applicable)
-- [ ] New features include tests
-- [ ] User-facing changes are documented
-- [ ] Manually verified (if applicable)
+See `.github/PULL_REQUEST_TEMPLATE.md` for the current checklist.
