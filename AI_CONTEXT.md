@@ -34,7 +34,7 @@ docs/dev-charter/    # 開発憲章（git subtree）
 - **ドキュメント同期**: 仕様・ルール・構成の変更時、同じ作業内で関連ドキュメント（docs/・AI_CONTEXT.md・README.md 等）を更新する（[AI_TOOL_SETUP.md](docs/dev-charter/AI_TOOL_SETUP.md)）
 - **コミットメッセージ**: Conventional Commits（feat/fix/chore/docs/refactor）
 - **セキュリティ**: pre-commit フック（gitleaks・detect-dotenv・detect-private-key・no-hardcoded-local-paths）必須
-- **CI**: GitHub Actions で security → test → build の順で実行。`build` job が Branch Protection 必須チェック
+- **CI**: GitHub Actions で security / lint（ruff + mypy） / test → build → gate（`Required Checks`）の順で実行。docs-only の変更では lint/test/build は自動スキップされる。`gate` job が Branch Protection 必須チェック
 - **コメント**: 「なぜそうするか」のみ書く。自明な処理には書かない
 - **pre-commit**: `pre-commit run --all-files` で全フック通過が必須
 - **憲章参照手順**: 不明点は `CHARTER_INDEX.md` → 該当ファイル（1〜2 件）の順で参照（[AI_COLLABORATION_RULES.md](docs/dev-charter/AI_COLLABORATION_RULES.md)）

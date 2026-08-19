@@ -67,18 +67,6 @@ jobs:
       - run: uv sync --extra dev
       - run: uv run ruff check .
       - run: uv run ruff format --check .
-
-  type-check:
-    name: Type check
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/checkout@v7
-      - uses: astral-sh/setup-uv@v7
-        with:
-          enable-cache: true
-      - run: uv sync --extra dev
       - run: uv run mypy astropy_extension
 
   test:
@@ -102,7 +90,7 @@ jobs:
 
   build:
     name: Build
-    needs: [changes, security, lint, type-check, test]
+    needs: [changes, security, lint, test]
     if: needs.changes.outputs.code == 'true'
     runs-on: ubuntu-latest
     permissions: {}
