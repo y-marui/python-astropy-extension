@@ -5,7 +5,7 @@
 astropy を拡張する Python ライブラリ。天文データ解析向けのカスタム単位・単位フォーマット・可視化・データ入出力ユーティリティを提供する。
 
 **技術スタック:**
-- 言語: Python >= 3.9（pyenv で 3.12.5 を使用）
+- 言語: Python >= 3.9（pyenv で 3.14 を使用）
 - 主要依存: astropy >= 5.1, numpy >= 1.23.3, matplotlib >= 3.6.1, pylightxl >= 1.61
 - パッケージ管理: uv（`uv sync --extra dev`）
 - linter / formatter: ruff
