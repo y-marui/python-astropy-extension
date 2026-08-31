@@ -10,7 +10,17 @@ from astropy.utils.misc import JsonCustomEncoder as JsonEncoder
 
 
 class JsonCustomEncoder(JsonEncoder):
-    pass
+    """astropy の JsonCustomEncoder に Time のシリアライズ対応を追加する.
+
+    JsonCustomDecoder は "datetime" キーの値を Time に復元するが、対になる
+    エンコード側（Time -> 文字列）は astropy 本体の JsonCustomEncoder には
+    実装されていないため、ここで補う.
+    """
+
+    def default(self, o):
+        if isinstance(o, Time):
+            return o.iso
+        return super().default(o)
 
 
 class JsonCustomDecoder(json.JSONDecoder):

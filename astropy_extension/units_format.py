@@ -19,5 +19,5 @@ class LatexInlineNoFrac(u.format.Latex):
     name = "latex_inline_no_flac"
 
     @classmethod
-    def to_string(cls, unit, fraction="inline"):
-        return super().to_string(unit, fraction=fraction)
+    def to_string(cls, unit, fraction="inline", **kwargs):
+        return super().to_string(unit, fraction=fraction, **kwargs)
