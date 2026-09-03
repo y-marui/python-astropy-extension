@@ -74,7 +74,7 @@ jobs:
       - uses: astral-sh/setup-uv@v10.0.1
         with:
           enable-cache: true
-      - run: uv sync --extra dev
+      - run: uv sync
       - run: uv run ruff check .
       - run: uv run ruff format --check .
       - run: uv run mypy astropy_extension
@@ -95,7 +95,7 @@ jobs:
         with:
           enable-cache: true
           python-version: ${{ matrix.python-version }}
-      - run: uv sync --extra dev
+      - run: uv sync
       - run: uv run pytest
 
   build:

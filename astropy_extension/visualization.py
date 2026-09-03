@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Licensed under a 3-clause BSD style license - see LICENSE.rst
 """astropy の既存クラスの一部を拡張して、便利な関数を定義する."""
 
@@ -54,9 +53,9 @@ def labeled_quantity_support(
         elif n == 2:
             return "π"
         elif n % 2 == 0:
-            return "{}π".format(n / 2)
+            return f"{n / 2}π"
         else:
-            return "{}π/2".format(n)
+            return f"{n}π/2"
 
     class MplQuantityConverter(units.ConversionInterface):
         def __init__(self):
@@ -78,7 +77,7 @@ def labeled_quantity_support(
             if unit in [None, u.dimensionless_unscaled, u.dimensionless_angles]:
                 label = axis_label
             else:
-                label = "{} ({})".format(axis_label, unit.to_string(format))
+                label = f"{axis_label} ({unit.to_string(format)})"
 
             # if unit == u.radian:
             #     return units.AxisInfo(

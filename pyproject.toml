@@ -13,7 +13,11 @@ dependencies = [
     "pylightxl>=1.61",
 ]
 
-[project.optional-dependencies]
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
 dev = [
     "ipykernel>=6.16.0",
     "pytest>=9.0.3",
@@ -21,16 +25,16 @@ dev = [
     "mypy>=1.15.0",
 ]
 
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
 [tool.ruff]
 target-version = "py311"
 line-length = 130
+# docs/dev-charter/ is a git subtree we cannot edit directly (see
+# AI_CONTEXT.md); recent ruff formats fenced Python blocks in Markdown
+# by default, which would otherwise flag it.
+extend-exclude = ["docs/dev-charter"]
 
 [tool.ruff.lint]
-select = ["E", "F", "W", "I"]
+select = ["E", "F", "W", "I", "UP"]
 
 [tool.mypy]
 python_version = "3.11"
