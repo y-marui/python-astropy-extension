@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Licensed under a 3-clause BSD style license - see LICENSE.rst
 """astropy の既存クラスの一部を拡張して、便利な関数を定義する."""
 
