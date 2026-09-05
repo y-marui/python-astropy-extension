@@ -1,7 +1,9 @@
+from typing import Any
+
 import astropy.units as u
 
 
-def get_units(unit):
+def get_units(unit: str | list[Any]) -> Any:
     if isinstance(unit, list):
         return [get_units(v) for v in unit]
     else:
@@ -15,7 +17,7 @@ def get_units(unit):
                 return v
 
 
-def get_values(value):
+def get_values(value: str | list[Any]) -> Any:
     if isinstance(value, list):
         return [get_values(v) for v in value]
     else:

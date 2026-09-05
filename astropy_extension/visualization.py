@@ -44,7 +44,7 @@ def labeled_quantity_support(
     from astropy import units as u
     from matplotlib import ticker, units
 
-    def rad_fn(x, pos=None):
+    def rad_fn(x: float, pos: Any = None) -> str:
         n = int((x / np.pi) * 2.0 + 0.25)
         if n == 0:
             return "0"
@@ -58,7 +58,7 @@ def labeled_quantity_support(
             return f"{n}π/2"
 
     class MplQuantityConverter(units.ConversionInterface):
-        def __init__(self):
+        def __init__(self) -> None:
             if u.Quantity not in units.registry:
                 units.registry[u.Quantity] = self
                 self._remove = True
@@ -66,7 +66,7 @@ def labeled_quantity_support(
                 self._remove = False
 
         @staticmethod
-        def axisinfo(unit, axis):
+        def axisinfo(unit: Any, axis: Any) -> Any:
             if isinstance(axis, mtlb.axis.XAxis):
                 axis_label = xlabel
             elif isinstance(axis, mtlb.axis.YAxis):
@@ -86,18 +86,19 @@ def labeled_quantity_support(
             #         label=label,
             #     )
             # el
+            # matplotlib's `AxisInfo.__init__` is untyped; see issue #34.
             if unit == u.degree:
-                return units.AxisInfo(
+                return units.AxisInfo(  # type: ignore[no-untyped-call]
                     majloc=ticker.AutoLocator(),
                     majfmt=ticker.FormatStrFormatter("%i°"),
                     label=label,
                 )
             elif unit is not None:
-                return units.AxisInfo(label=label)
+                return units.AxisInfo(label=label)  # type: ignore[no-untyped-call]
             return None
 
         @staticmethod
-        def convert(val, unit, axis):
+        def convert(val: Any, unit: Any, axis: Any) -> Any:
             if isinstance(val, u.Quantity):
                 return val.to_value(unit)
             elif isinstance(val, ma.masked_array) and isinstance(val.data, u.Quantity):
@@ -108,17 +109,17 @@ def labeled_quantity_support(
                 return val
 
         @staticmethod
-        def default_units(x, axis):
+        def default_units(x: Any, axis: Any) -> Any:
             if hasattr(x, "unit"):
                 return x.unit
             elif isinstance(x, ma.masked_array) and hasattr(x.data, "unit"):
                 return x.data.unit
             return None
 
-        def __enter__(self):
+        def __enter__(self) -> "MplQuantityConverter":
             return self
 
-        def __exit__(self, type, value, tb):
+        def __exit__(self, type: Any, value: Any, tb: Any) -> None:
             if self._remove:
                 del units.registry[u.Quantity]
 

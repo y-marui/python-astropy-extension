@@ -34,10 +34,10 @@ except ValueError:
     u.add_enabled_units([hbar_e])
 
 
-def get_exponential_as_unit(n):
+def get_exponential_as_unit(n: int) -> u.Unit:
     try:
         res: u.Unit = u.Unit(f"E{n}")
     except ValueError:
-        res: u.Unit = u.def_unit(f"E{{{n}}}", 10**n * u.one, format={"latex": f"10^{{{n}}}"})
+        res = u.def_unit(f"E{{{n}}}", 10**n * u.one, format={"latex": f"10^{{{n}}}"})
         u.add_enabled_units([res])
     return res

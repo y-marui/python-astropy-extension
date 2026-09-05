@@ -2,13 +2,14 @@
 """astropy の既存クラスの一部を拡張して、便利な関数を定義する."""
 
 import json
+from typing import Any
 
 from astropy import units as u
 from astropy.time import Time
 from astropy.utils.misc import JsonCustomEncoder as JsonEncoder
 
 
-class JsonCustomEncoder(JsonEncoder):
+class JsonCustomEncoder(JsonEncoder):  # type: ignore[misc]
     """astropy の JsonCustomEncoder に Time のシリアライズ対応を追加する.
 
     JsonCustomDecoder は "datetime" キーの値を Time に復元するが、対になる
@@ -16,7 +17,10 @@ class JsonCustomEncoder(JsonEncoder):
     実装されていないため、ここで補う.
     """
 
-    def default(self, o):
+    # astropy ships no inline type stubs for `JsonCustomEncoder`, so mypy
+    # sees it as `Any` and flags the subclass; see issue #34.
+
+    def default(self, o: Any) -> Any:
         if isinstance(o, Time):
             return o.iso
         return super().default(o)
@@ -50,11 +54,11 @@ class JsonCustomDecoder(json.JSONDecoder):
 
     """
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
         """初期化する."""
         json.JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
 
-    def object_hook(self, obj):
+    def object_hook(self, obj: dict[str, Any]) -> Any:
         """オブジェクトの内指定のものを変換."""
         if ["unit", "value"] == sorted(obj):
             return u.Quantity(**obj)
