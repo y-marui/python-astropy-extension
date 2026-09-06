@@ -20,7 +20,9 @@ def read_csv(path: Path, has_unit: bool = False, remove_sharp: bool = False) -> 
             _dataset = get_values(_data[2:])
             _colnames = _data[0]
             _units = _data[1]
-            return QTable(dict(zip(_colnames, list(zip(*_dataset)))), units=get_units(_units))
+            return QTable(
+                dict(zip(_colnames, list(zip(*_dataset)))), units=get_units(_units)
+            )
 
         else:
             _dataset = get_values(_data[1:])
