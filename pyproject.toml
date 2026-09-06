@@ -27,7 +27,7 @@ dev = [
 
 [tool.ruff]
 target-version = "py311"
-line-length = 130
+line-length = 88
 # docs/dev-charter/ is a git subtree we cannot edit directly (see
 # AI_CONTEXT.md); recent ruff formats fenced Python blocks in Markdown
 # by default, which would otherwise flag it.

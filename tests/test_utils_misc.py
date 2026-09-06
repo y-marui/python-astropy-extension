@@ -12,12 +12,16 @@ def test_encoder_serializes_quantity():
 
 
 def test_decoder_restores_quantity():
-    decoded = json.loads('{"length": {"value": 5.0, "unit": "V"}}', cls=JsonCustomDecoder)
+    decoded = json.loads(
+        '{"length": {"value": 5.0, "unit": "V"}}', cls=JsonCustomDecoder
+    )
     assert decoded == {"length": 5 * u.V}
 
 
 def test_decoder_restores_datetime():
-    decoded = json.loads('{"datetime": "2018-11-08 14:09:39.401948"}', cls=JsonCustomDecoder)
+    decoded = json.loads(
+        '{"datetime": "2018-11-08 14:09:39.401948"}', cls=JsonCustomDecoder
+    )
     assert decoded == {"datetime": Time("2018-11-08 14:09:39.401948", format="iso")}
 
 
@@ -28,7 +32,9 @@ def test_decoder_leaves_unrelated_objects_unchanged():
 
 def test_roundtrip_encode_decode():
     sample = {"length": 5 * u.V, "datetime": Time.now()}
-    decoded = json.loads(json.dumps(sample, cls=JsonCustomEncoder), cls=JsonCustomDecoder)
+    decoded = json.loads(
+        json.dumps(sample, cls=JsonCustomEncoder), cls=JsonCustomDecoder
+    )
 
     assert decoded["length"] == sample["length"]
     assert decoded["datetime"].iso == sample["datetime"].iso

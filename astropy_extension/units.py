@@ -24,13 +24,17 @@ except ValueError:
 try:
     hbar_2e: u.Unit = u.Unit("hbar_2e")
 except ValueError:
-    hbar_2e = u.def_unit("hbar_2e", c.hbar / (2 * c.e.si), format={"latex": r"\dfrac{\hbar}{2e}"})
+    hbar_2e = u.def_unit(
+        "hbar_2e", c.hbar / (2 * c.e.si), format={"latex": r"\dfrac{\hbar}{2e}"}
+    )
     u.add_enabled_units([hbar_2e])
 
 try:
     hbar_e: u.Unit = u.Unit("hbar_e")
 except ValueError:
-    hbar_e = u.def_unit("hbar_e", c.hbar / (c.e.si), format={"latex": r"\dfrac{\hbar}{e}"})
+    hbar_e = u.def_unit(
+        "hbar_e", c.hbar / (c.e.si), format={"latex": r"\dfrac{\hbar}{e}"}
+    )
     u.add_enabled_units([hbar_e])
 
 

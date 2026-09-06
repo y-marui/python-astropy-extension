@@ -22,7 +22,9 @@ class LatexInlineNoFrac(u.format.Latex):  # type: ignore[misc]
     name = "latex_inline_no_flac"
 
     @classmethod
-    def to_string(cls, unit: u.UnitBase, fraction: bool | str = "inline", **kwargs: Any) -> str:
+    def to_string(
+        cls, unit: u.UnitBase, fraction: bool | str = "inline", **kwargs: Any
+    ) -> str:
         # `Latex.to_string` is untyped (see the class-level note above), so
         # mypy infers its return as `Any` here.
         return super().to_string(unit, fraction=fraction, **kwargs)  # type: ignore[no-any-return]
