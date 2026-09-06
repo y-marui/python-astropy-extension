@@ -5,12 +5,10 @@
 astropy を拡張する Python ライブラリ。天文データ解析向けのカスタム単位・単位フォーマット・可視化・データ入出力ユーティリティを提供する。
 
 **技術スタック:**
-- 言語: Python >= 3.9（pyenv で 3.14 を使用）
 - 主要依存: astropy >= 5.1, numpy >= 1.23.3, matplotlib >= 3.6.1, pylightxl >= 1.61
-- パッケージ管理: uv（`uv sync --extra dev`）
-- linter / formatter: ruff
-- 型チェック: mypy
-- テスト: pytest
+- バージョン管理・パッケージ管理・Lint/Format・型チェック・テストの一般方針は
+  [docs/dev-charter/topics/python/PYTHON_DEV_ENV.md](docs/dev-charter/topics/python/PYTHON_DEV_ENV.md)
+  を参照
 
 **主要ディレクトリ:**
 
@@ -45,7 +43,6 @@ docs/dev-charter/    # 開発憲章（git subtree）
 - lint: `uv run ruff check .` / format: `uv run ruff format .`
 - 型チェック: `uv run mypy astropy_extension`
 - テスト実行: `uv run pytest`
-- Python バージョン制約: >= 3.11（EOL まで 6 ヶ月以上あるバージョンをサポート対象とする）
 
 ## AI Tool Assignments
 
