@@ -80,11 +80,14 @@ jobs:
       - uses: actions/checkout@v7
       - uses: astral-sh/setup-uv@v10.3.0
         with:
-          enable-cache: true
+          enable-cache: ${{ !(vars.LINUX_RUNNER && !github.event.pull_request.head.repo.fork) }}
       - run: uv sync
       - run: uv run ruff check .
       - run: uv run ruff format --check .
       - run: uv run mypy astropy_extension
+      - name: Prune local uv cache
+        if: ${{ always() && vars.LINUX_RUNNER && !github.event.pull_request.head.repo.fork }}
+        run: uv cache prune --ci
 
   test:
     name: Test (Python ${{ matrix.python-version }})
@@ -101,10 +104,13 @@ jobs:
       - uses: actions/checkout@v7
       - uses: astral-sh/setup-uv@v10.3.0
         with:
-          enable-cache: true
+          enable-cache: ${{ !(vars.LINUX_RUNNER && !github.event.pull_request.head.repo.fork) }}
           python-version: ${{ matrix.python-version }}
       - run: uv sync
       - run: uv run pytest
+      - name: Prune local uv cache
+        if: ${{ always() && vars.LINUX_RUNNER && !github.event.pull_request.head.repo.fork }}
+        run: uv cache prune --ci
 
   build:
     name: Build
@@ -117,9 +123,12 @@ jobs:
       - uses: actions/checkout@v7
       - uses: astral-sh/setup-uv@v10.3.0
         with:
-          enable-cache: true
+          enable-cache: ${{ !(vars.LINUX_RUNNER && !github.event.pull_request.head.repo.fork) }}
       - run: uv sync
       - run: uv run python -c "import astropy_extension"
+      - name: Prune local uv cache
+        if: ${{ always() && vars.LINUX_RUNNER && !github.event.pull_request.head.repo.fork }}
+        run: uv cache prune --ci
 
   gate:
     name: CI
