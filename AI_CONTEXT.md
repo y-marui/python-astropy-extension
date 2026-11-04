@@ -37,6 +37,16 @@ docs/dev-charter/    # 開発憲章（git subtree）
 - **pre-commit**: `pre-commit run --all-files` で全フック通過が必須
 - **憲章参照手順**: 不明点は `CHARTER_INDEX.md` → 該当ファイル（1〜2 件）の順で参照（[AI_COLLABORATION_RULES.md](docs/dev-charter/AI_COLLABORATION_RULES.md)）
 
+### Charter Lookup
+
+不明点が憲章に関係する場合は**全ファイルを検索せず**、以下の手順で参照する:
+
+1. `docs/dev-charter/CHARTER_INDEX.md` を読み、該当トピックのファイルを特定する
+2. 特定したファイル（原則 1〜2 件）のみを読む
+3. 参照後にユーザーへ提案・確認を行う
+
+推測で断定せず、憲章を参照してからユーザーに提案・質問する。
+
 ## Project-Specific Rules
 
 - パッケージ管理は **uv** を使用する（`uv sync --extra dev`）
