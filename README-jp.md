@@ -13,7 +13,7 @@ astropy を拡張するユーティリティライブラリ。天文・物性デ
 
 ## Requirements
 
-- Python >= 3.8
+- Python >= 3.11
 - astropy >= 5.1
 - numpy >= 1.23.3
 - matplotlib >= 3.6.1
@@ -22,7 +22,7 @@ astropy を拡張するユーティリティライブラリ。天文・物性デ
 ## Setup
 
 ```sh
-uv sync --extra dev
+uv sync
 ```
 
 ## Usage
