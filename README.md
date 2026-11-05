@@ -9,11 +9,11 @@
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/y-marui?style=social)](https://github.com/sponsors/y-marui)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-donate-yellow.svg)](https://www.buymeacoffee.com/y.marui)
 
-astropy を拡張するユーティリティライブラリ。天文・物性データ解析向けのカスタム単位・可視化・データ入出力ユーティリティを提供します。
+A utility library that extends astropy, providing custom units, visualization, and data I/O utilities for astronomy and condensed-matter data analysis.
 
 ## Requirements
 
-- Python >= 3.8
+- Python >= 3.11
 - astropy >= 5.1
 - numpy >= 1.23.3
 - matplotlib >= 3.6.1
@@ -22,7 +22,7 @@ astropy を拡張するユーティリティライブラリ。天文・物性デ
 ## Setup
 
 ```sh
-uv sync --extra dev
+uv sync
 ```
 
 ## Usage
@@ -32,21 +32,21 @@ from astropy_extension import units
 from astropy_extension.units import sccm, uohm_cm, A__m2, get_exponential_as_unit
 import astropy.units as u
 
-# カスタム単位を使う
+# Use custom units
 flow = 1.5 * sccm
 resistivity = 2.0 * uohm_cm
 current_density = 3.0 * A__m2
 
-# 指数単位を生成する
+# Create an exponent unit
 e12 = get_exponential_as_unit(12)
 ```
 
-| コマンド | 説明 |
+| Command | Description |
 |---|---|
-| `uv run pytest` | テスト実行 |
-| `uv run ruff check .` | lint |
-| `uv run ruff format .` | フォーマット |
-| `uv run mypy astropy_extension` | 型チェック |
+| `uv run pytest` | Run tests |
+| `uv run ruff check .` | Lint |
+| `uv run ruff format .` | Format |
+| `uv run mypy astropy_extension` | Type check |
 
 ## License
 
