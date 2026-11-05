@@ -56,7 +56,7 @@ docs/dev-charter/    # 開発憲章（git subtree）
 
 ## AI Tool Assignments
 
-- **使用ツール**：Claude Code、Codex、GitHub Copilot、Gemini CLI、ローカル LLM（Ollama）
+- **使用ツール**：Claude Code、Codex、GitHub Copilot、ローカル LLM（Ollama）
 - **標準担当の正本**：`docs/dev-charter/AI_COLLABORATION_RULES.md` の「AI Tool Responsibilities」と「Rules for Multi-AI Usage」
 - **プロジェクト固有の上書き**：なし
 
